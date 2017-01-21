@@ -39,13 +39,9 @@ public class MagicBall : MonoBehaviour
         }
         else
         {
-            if(BallDirectionVertical == 0)
+            if (BallDirectionVertical == 0)
             {
                 BallDirectionVertical = Random.Range(-1, 2);
-            }
-            else
-            {
-                MoveBall();
             }
             
         }
@@ -139,6 +135,7 @@ public class MagicBall : MonoBehaviour
         }else if(other.tag == "GoalP1")
         {
             levelManager.Player1Point += 1;
+            Destroy(gameObject);
             if(levelManager.Player1Point == levelManager.WinPoint)
             {
                 //Player 1 WIN
@@ -147,6 +144,7 @@ public class MagicBall : MonoBehaviour
         else if (other.tag == "GoalP2")
         {
             levelManager.Player2Point += 1;
+            Destroy(gameObject);
             if (levelManager.Player2Point == levelManager.WinPoint)
             {
                 //Player 2 WIN
