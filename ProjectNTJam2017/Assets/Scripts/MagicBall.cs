@@ -15,6 +15,9 @@ public class MagicBall : MonoBehaviour
     public bool RandomBallB = true;
     LevelManager levelManager;
 
+    private float Timer;
+    private bool IsTimerActive;
+
     // Use this for initialization
     void Start()
     {
@@ -24,7 +27,7 @@ public class MagicBall : MonoBehaviour
         selfRigidbody = GetComponent<Rigidbody>();
         BallDirectionHorizontal = Random.Range(-1, 2);
         BallDirectionVertical = Random.Range(-1, 2);
-
+        IsTimerActive = true;
         runeAction = GameObject.Find("Arena").GetComponent<RuneAction>();
         levelManager = GameObject.Find("Arena").GetComponent<LevelManager>();
     }
@@ -32,7 +35,6 @@ public class MagicBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(selfRigidbody.velocity.magnitude);
         if (BallDirectionHorizontal == 0)
         {
             BallDirectionHorizontal = Random.Range(-1, 2);
@@ -45,7 +47,17 @@ public class MagicBall : MonoBehaviour
             }
             else
             {
-                MoveBall();
+                if(IsTimerActive)
+                {
+                    Timer += Time.deltaTime;
+                    if(Timer >= 3)
+                    {
+                        MoveBall();
+                        Timer = 0;
+                        IsTimerActive = false;
+                    }
+                }
+                
             }
             
         }
