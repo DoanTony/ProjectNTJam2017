@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 23361727034775876}
   - component: {fileID: 114313873700065542}
   - component: {fileID: 54231097041909992}
+  - component: {fileID: 135458814446286096}
   m_Layer: 0
   m_Name: MagicBall
-  m_TagString: Untagged
+  m_TagString: MagicBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808509652181386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 138}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5370e7995b48e4995e1cedcdeeddf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallForce: 1000
+  BallForce: 500
+  VelMax: 300
+  VelMin: 0
+  RandomBallB: 1
 --- !u!135 &135205209726547206
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -117,6 +121,18 @@ SphereCollider:
   m_GameObject: {fileID: 1808509652181386}
   m_Material: {fileID: 13400000, guid: 4c495647abb63bc469676b765a7f930f, type: 2}
   m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135458814446286096
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808509652181386}
+  m_Material: {fileID: 13400000, guid: 4c495647abb63bc469676b765a7f930f, type: 2}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

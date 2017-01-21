@@ -202,6 +202,12 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -93
       objectReference: {fileID: 0}
+    - target: {fileID: 114432665987330450, guid: 331acc8ed9712e842bca888564eef6f6,
+        type: 2}
+      propertyPath: MagicBall
+      value: 
+      objectReference: {fileID: 114313873700065542, guid: f80883852be1f1c48a7b6146d9972b53,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 331acc8ed9712e842bca888564eef6f6, type: 2}
   m_IsPrefabParent: 0
@@ -244,19 +250,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114313873700065542, guid: f80883852be1f1c48a7b6146d9972b53,
-        type: 2}
-      propertyPath: BallForce
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 114313873700065542, guid: f80883852be1f1c48a7b6146d9972b53,
-        type: 2}
-      propertyPath: VelMax
-      value: 300
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f80883852be1f1c48a7b6146d9972b53, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1 &1107702175
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +363,8 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 161274e1677644bfe998902f23caa2895b596556
 --- !u!1 &1694893078
 GameObject:
   m_ObjectHideFlags: 0
