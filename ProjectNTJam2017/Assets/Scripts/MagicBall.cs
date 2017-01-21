@@ -43,6 +43,10 @@ public class MagicBall : MonoBehaviour
             {
                 BallDirectionVertical = Random.Range(-1, 2);
             }
+            else
+            {
+                MoveBall();
+            }
             
         }
     }
