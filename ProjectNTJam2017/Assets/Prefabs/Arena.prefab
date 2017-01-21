@@ -229,6 +229,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4513873329451270}
+  - component: {fileID: 114242957263157894}
   m_Layer: 0
   m_Name: Arena
   m_TagString: Untagged
@@ -1516,6 +1517,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114242957263157894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632830373582324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c251c8554375d324a915e02f6f674f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleP1: {fileID: 1143027906288644, guid: deafed9bfa5264945abe7e52c03c7eb9, type: 2}
+  ParticleP2: {fileID: 1143027906288644, guid: c667187bcb04bff4eab64233f3836df0, type: 2}
+  ParticleP3: {fileID: 1143027906288644, guid: f4a9093b2f23f824fb88380bbf9c3d52, type: 2}
+  ParticleP4: {fileID: 1143027906288644, guid: 2b9c1c70a6d157e4b8368c23924a3a00, type: 2}
 --- !u!135 &135052137026727544
 SphereCollider:
   m_ObjectHideFlags: 1
