@@ -7,7 +7,7 @@ public class MagicBall : MonoBehaviour
 
     private Rigidbody selfRigidbody;
     public int BallForce;
-    private int BallDirection;
+    private int BallDirectionHorizontal,BallDirectionVertical;
     private bool IsBallMoving;
     RuneAction runeAction;
     public float VelMax;
@@ -22,7 +22,8 @@ public class MagicBall : MonoBehaviour
         InvokeRepeating("RandomBall", 2.0f, 5f);
         IsBallMoving = false;
         selfRigidbody = GetComponent<Rigidbody>();
-        BallDirection = Random.Range(-1, 2);
+        BallDirectionHorizontal = Random.Range(-1, 2);
+        BallDirectionVertical = Random.Range(-1, 2);
 
         runeAction = GameObject.Find("Arena").GetComponent<RuneAction>();
         levelManager = GameObject.Find("Arena").GetComponent<LevelManager>();
@@ -31,28 +32,37 @@ public class MagicBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BallDirection == 0)
+        Debug.Log(selfRigidbody.velocity.magnitude);
+        if (BallDirectionHorizontal == 0)
         {
-            BallDirection = Random.Range(-1, 2);
+            BallDirectionHorizontal = Random.Range(-1, 2);
         }
         else
         {
-            MoveBall();
+            if(BallDirectionVertical == 0)
+            {
+                BallDirectionVertical = Random.Range(-1, 2);
+            }
+            else
+            {
+                MoveBall();
+            }
+            
         }
     }
     public void func(Vector3 _opposite, float _hu)
     {
         
-        selfRigidbody.velocity = (_opposite * _hu);
+        selfRigidbody.velocity = _opposite * _hu;
 
         float speed = Vector3.Magnitude(selfRigidbody.velocity);  // test current object speed
 
-        Debug.Log(speed);
+       // Debug.Log(speed);
         //== TESTING ==\\
         if (speed > VelMax)
 
         {
-            selfRigidbody.velocity = new Vector3((selfRigidbody.velocity.x/Mathf.Abs(selfRigidbody.velocity.x))*VelMax,selfRigidbody.velocity.y, (selfRigidbody.velocity.z / Mathf.Abs(selfRigidbody.velocity.z)) * VelMax);
+            selfRigidbody.velocity = new Vector3((selfRigidbody.velocity.x/Mathf.Abs(selfRigidbody.velocity.x))*VelMax,selfRigidbody.velocity.y, (selfRigidbody.velocity.z / Mathf.Abs(selfRigidbody.velocity.z)) * VelMax) * -1;
         }
        
     }
@@ -155,7 +165,7 @@ public class MagicBall : MonoBehaviour
     {
         if(!IsBallMoving)
         {
-            selfRigidbody.AddForce(new Vector3(BallForce * BallDirection, gameObject.transform.position.y, -BallForce), ForceMode.VelocityChange);
+            selfRigidbody.AddForce(new Vector3(BallForce * BallDirectionHorizontal, gameObject.transform.position.y, BallForce * BallDirectionVertical), ForceMode.VelocityChange);
             IsBallMoving = true;
         }
     }
@@ -163,7 +173,7 @@ public class MagicBall : MonoBehaviour
 
     //Play this function every 5 seconde
     //Check if ball did not touch a Rune for like 5 seconde
-    void RandomBall()
+/*    void RandomBall()
     {
         if(RandomBallB == true)
         {
@@ -174,9 +184,9 @@ public class MagicBall : MonoBehaviour
             RandomBallB = true;
         }
     }
-
-    public void MoveBallShack()
+    */
+   /* public void MoveBallShack()
     {
         selfRigidbody.AddForce(new Vector3(BallForce * BallDirection, gameObject.transform.position.y, -BallForce), ForceMode.VelocityChange);
-    }
+    }*/
 }

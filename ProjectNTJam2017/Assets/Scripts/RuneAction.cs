@@ -28,10 +28,7 @@ public class RuneAction : MonoBehaviour {
     public bool P2XUp;
     public bool P2XDown;
 
-    // Use this for initialization
-    void Start () {
-        
-	}
+ 
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,7 +40,7 @@ public class RuneAction : MonoBehaviour {
         if (Input.GetButtonDown("P1Fire1"))
         {
             Rune = GameObject.Find("RuneAP1");
-            Instantiate(ParticleP3, new Vector3(Rune.transform.position.x, Rune.transform.position.y +10, Rune.transform.position.z), Quaternion.identity);
+            Instantiate(ParticleP3, new Vector3(Rune.transform.position.x, Rune.transform.position.y + 10, Rune.transform.position.z), Quaternion.identity);
             P1A = true;
             StartCoroutine(Timer(P1A, "P1A", 2f, 1));
         }
