@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: abbbee96621958c409f4d2c6784ccfd0
-timeCreated: 1485006643
+guid: 76df7c8830ad3b848a3a0e97ab88728e
+timeCreated: 1485030137
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: SF Slapstick Comic Shaded
+  fontName: mitubachi
   fontNames:
-  - SF Slapstick Comic Shaded
+  - mitubachi
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
