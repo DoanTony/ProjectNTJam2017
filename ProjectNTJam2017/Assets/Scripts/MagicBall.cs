@@ -26,10 +26,9 @@ public class MagicBall : MonoBehaviour
             BallDirection = Random.Range(-1, 2);
         }
         else
-        { 
+        {
             MoveBall();
         }
-
     }
 
     public void MoveBall()
