@@ -14,16 +14,19 @@ public class LevelManager : MonoBehaviour {
     public int breakCombo = 2;
 
     public int WinPoint;
+
+
     
 
     private bool BallExist;
 	// Use this for initialization
 	void Start () {
-       
+   
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
         if (GameObject.FindGameObjectWithTag("MagicBall") == null)
         {
             BallExist = false;
