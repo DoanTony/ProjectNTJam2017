@@ -2616,6 +2616,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1Point: 0
   Player2Point: 0
+  MagicBall: {fileID: 114313873700065542, guid: f80883852be1f1c48a7b6146d9972b53,
+    type: 2}
+  PowerAttackP1: 0
+  PowerAttackP2: 0
+  comboMax: 5
   comboP1: 0
   comboP2: 0
   breakCombo: 2

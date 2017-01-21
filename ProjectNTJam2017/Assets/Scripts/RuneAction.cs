@@ -10,6 +10,8 @@ public class RuneAction : MonoBehaviour {
     public GameObject ParticleP3;
     public GameObject ParticleP4;
 
+    LevelManager levelManager;
+
     //Bool Player 1
     public bool P1A;
     public bool P1BUp;
@@ -28,6 +30,11 @@ public class RuneAction : MonoBehaviour {
     public bool P2XUp;
     public bool P2XDown;
 
+
+    void Start()
+    {
+        levelManager = GetComponent<LevelManager>();
+    }
  
 	
 	// Update is called once per frame
@@ -43,6 +50,18 @@ public class RuneAction : MonoBehaviour {
             Instantiate(ParticleP3, new Vector3(Rune.transform.position.x, Rune.transform.position.y + 10, Rune.transform.position.z), Quaternion.identity);
             P1A = true;
             StartCoroutine(Timer(P1A, "P1A", 2f, 1));
+
+            if (levelManager.comboP1 != 5)
+            {
+                levelManager.comboP1 += 1;
+            }else if (levelManager.comboP1 == 5)
+            {
+                levelManager.PowerAttackP1 = true;
+            }
+            if(levelManager.comboP2 >= 2)
+            {
+                levelManager.comboP2 = 0;
+            }
         }
         #endregion
 

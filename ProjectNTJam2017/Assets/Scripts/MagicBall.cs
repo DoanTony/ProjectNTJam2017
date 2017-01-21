@@ -43,7 +43,11 @@ public class MagicBall : MonoBehaviour
             {
                 BallDirectionVertical = Random.Range(-1, 2);
             }
-            
+            else
+            {
+                MoveBall();
+            }
+           
         }
     }
     public void func(Vector3 _opposite, float _hu)
