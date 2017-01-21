@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Particale
+  - Rune
+  - GoalP1
+  - GoalP2
   layers:
   - Default
   - TransparentFX

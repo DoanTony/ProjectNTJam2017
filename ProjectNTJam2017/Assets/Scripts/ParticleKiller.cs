@@ -19,7 +19,6 @@ public class ParticleKiller : MonoBehaviour {
 
         if (ps)
         {
-            col.radius = ps.shape.radius;
             if(!ps.IsAlive())
             {
 
