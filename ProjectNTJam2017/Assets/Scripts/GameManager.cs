@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour {
 	}
      void FixedUpdate()
     {
-         Debug.Log(StaticData.Player1Score);
-        if(ScoreP1 >= 4)
+        if(StaticData.Player1Score >= 4)
         {
             Debug.Log("PLAYER1 WIN");
         }
