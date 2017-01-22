@@ -16,12 +16,14 @@ public class MagicBall : MonoBehaviour
     LevelManager levelManager;
     public bool inputAble = false;
 
+    private GameManager gameManager;
     private float Timer;
     private bool IsTimerActive;
 
     // Use this for initialization
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         InvokeRepeating("RandomBall", 2.0f, 5f);
         IsBallMoving = false;
         selfRigidbody = GetComponent<Rigidbody>();
@@ -35,6 +37,15 @@ public class MagicBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (IsTimerActive == false)
+        {
+            if (selfRigidbody.velocity.magnitude < 100)
+            {
+                MoveBallShack();
+            }
+        }
+      
         if (BallDirectionHorizontal == 0)
         {
             BallDirectionHorizontal = Random.Range(-1, 2);
@@ -57,6 +68,7 @@ public class MagicBall : MonoBehaviour
                         inputAble = true;
                         Timer = 0;
                         IsTimerActive = false;
+                  
                     }
                 }
                 
@@ -170,6 +182,7 @@ public class MagicBall : MonoBehaviour
             }
             else if (other.tag == "GoalP1")
             {
+                gameManager.PlayBlueScore();
                 StaticData.Player2Score++;
                 Destroy(gameObject);
                 if (levelManager.Player1Point == levelManager.WinPoint)
@@ -179,6 +192,7 @@ public class MagicBall : MonoBehaviour
             }
             else if (other.tag == "GoalP2")
             {
+                gameManager.PlayRedScore();
                 StaticData.Player1Score++;
                 Destroy(gameObject);
                 if (levelManager.Player2Point == levelManager.WinPoint)
@@ -188,7 +202,6 @@ public class MagicBall : MonoBehaviour
             }
         }
         
-
 
     }
 
@@ -201,28 +214,17 @@ public class MagicBall : MonoBehaviour
     {
         if(!IsBallMoving)
         {
-            selfRigidbody.AddForce(new Vector3(BallForce * BallDirectionHorizontal, gameObject.transform.position.y, BallForce * BallDirectionVertical), ForceMode.VelocityChange);
+            selfRigidbody.AddForce(new Vector3(BallForce * BallDirectionHorizontal * Random.Range(2,3), gameObject.transform.position.y, BallForce * BallDirectionVertical * Random.Range(2, 5)), ForceMode.VelocityChange);
             IsBallMoving = true;
         }
     }
 
 
-    //Play this function every 5 seconde
-    //Check if ball did not touch a Rune for like 5 seconde
-/*    void RandomBall()
+   public void MoveBallShack()
     {
-        if(RandomBallB == true)
-        {
-            MoveBallShack();
-        }
-        else
-        {
-            RandomBallB = true;
-        }
+  
+            selfRigidbody.AddForce(new Vector3(BallForce * BallDirectionHorizontal * Random.Range(2, 3), gameObject.transform.position.y, -BallForce), ForceMode.VelocityChange);
+
+        
     }
-    */
-   /* public void MoveBallShack()
-    {
-        selfRigidbody.AddForce(new Vector3(BallForce * BallDirection, gameObject.transform.position.y, -BallForce), ForceMode.VelocityChange);
-    }*/
 }
