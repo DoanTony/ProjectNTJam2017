@@ -52,6 +52,7 @@ public class MagicBall : MonoBehaviour
                     Timer += Time.deltaTime;
                     if(Timer >= 3)
                     {
+                        StaticData.Timer = Timer;
                         MoveBall();
                         inputAble = true;
                         Timer = 0;
