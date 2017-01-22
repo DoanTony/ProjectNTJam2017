@@ -20,26 +20,32 @@ public class LevelManager : MonoBehaviour {
 
     public int WinPoint;
 
-    private int Seconds, Minutes;
+    private float Seconds;
+    private int Minutes;    
 
-    
+
+
 
     private bool BallExist;
 	// Use this for initialization
-	void Start () {
+	public void Start () {
         Seconds = 0;
         Minutes = 0;
-    }
-    void Update()
-    {
-        Seconds += 1 * (int)Time.deltaTime;
-        Debug.Log(Seconds);
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-      
-        ScoreText[2].text = Minutes.ToString("00") + " : " + Seconds.ToString("00");
+        if(StaticData.Timer >= 3)
+        {
+            Seconds += 1 * Time.deltaTime;
+            ScoreText[2].text = Minutes.ToString("00") + ":" + Seconds.ToString("00");
+            if(Seconds >= 60)
+            {
+                Seconds = 0;
+                Minutes++;
+            }
+        }
+        
         if (GameObject.FindGameObjectWithTag("MagicBall") == null)
         {
             BallExist = false;
