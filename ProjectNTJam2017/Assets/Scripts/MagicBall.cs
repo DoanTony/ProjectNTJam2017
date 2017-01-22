@@ -23,12 +23,6 @@ public class MagicBall : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-<<<<<<< HEAD
-        //InvokeRepeating("RandomBall", 2.0f, 5f);
-=======
-        gameManager = FindObjectOfType<GameManager>();
-        InvokeRepeating("RandomBall", 2.0f, 5f);
->>>>>>> f8e30f4a47138c20ebf24e750bd88d42c623020b
         IsBallMoving = false;
         selfRigidbody = GetComponent<Rigidbody>();
         BallDirectionHorizontal = Random.Range(-1, 2);
