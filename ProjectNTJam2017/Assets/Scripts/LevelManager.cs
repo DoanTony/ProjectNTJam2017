@@ -13,7 +13,10 @@ public class LevelManager : MonoBehaviour {
     public int comboP1 = 0;
     public int comboP2 = 0;
     public int breakCombo = 2;
-    
+
+    public bool PowerAttackP1 = false;
+    public bool PowerAttackP2 = false;
+    public int comboMax = 5;
 
     public int WinPoint;
 

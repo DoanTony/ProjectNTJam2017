@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RuneAction : MonoBehaviour {
 
@@ -9,6 +10,9 @@ public class RuneAction : MonoBehaviour {
     public GameObject ParticleP2;
     public GameObject ParticleP3;
     public GameObject ParticleP4;
+
+    public bool spP1 = true;
+    public bool spP2 = true;
 
     //Bool Player 1
     public bool P1A;
@@ -28,13 +32,31 @@ public class RuneAction : MonoBehaviour {
     public bool P2XUp;
     public bool P2XDown;
 
- 
-	
-	// Update is called once per frame
-	void Update () {
+    public Text P1Attack;
+    public Text P2Attack;
+
+    LevelManager levelManager;
+
+    void Start()
+    {
+        levelManager = GetComponent<LevelManager>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         #region Player1
         //Player 1 Controller
+
+        #region SuperPower
+        if (Input.GetButtonDown("P1SpecialAttackLeft") && Input.GetButtonDown("P1SpecialAttackRight") && levelManager.PowerAttackP1 == true)
+        {
+            levelManager.comboP1 = 0;
+            P1Attack.text = "SA " + levelManager.comboP1 + "/" + levelManager.comboMax;
+            //ATAQUE SPECIALE
+            Debug.Log("Player 1 Attack Special, FAIT!");
+        }
+        #endregion
 
         #region A_Rune
         if (Input.GetButtonDown("P1Fire1"))
@@ -108,6 +130,17 @@ public class RuneAction : MonoBehaviour {
         #region Player2
         //Player 2 Controller
 
+        #region SuperPower
+        if (Input.GetButtonDown("P2SpecialAttackLeft") && Input.GetButtonDown("P2SpecialAttackRight") && levelManager.PowerAttackP1 == true)
+        {
+            levelManager.comboP2 = 0;
+            P2Attack.text = "SA " + levelManager.comboP2 + "/" + levelManager.comboMax;
+            //ATAQUE SPECIALE
+            Debug.Log("Player 2 Attack Special, FAIT!");
+        }
+        #endregion
+
+
         #region A_Rune
         if (Input.GetButtonDown("P2Fire1"))
         {
@@ -165,6 +198,7 @@ public class RuneAction : MonoBehaviour {
             Instantiate(ParticleP4, new Vector3(Rune.transform.position.x, Rune.transform.position.y + 5, Rune.transform.position.z), Quaternion.identity);
             P2YUp = true;
             StartCoroutine(Timer(P2YUp, " P2YUp", 2f, 2));
+            
         }
         if (Input.GetAxis("P2Vertical") > 0.5 && Input.GetButtonDown("P2Fire4"))
         {
@@ -173,6 +207,7 @@ public class RuneAction : MonoBehaviour {
             Instantiate(ParticleP4, new Vector3(Rune.transform.position.x, Rune.transform.position.y + 5, Rune.transform.position.z), Quaternion.identity);
             P2YDown = true;
             StartCoroutine(Timer(P2YDown, "P2YDown", 2f, 2));
+            
         }
         #endregion
 
@@ -252,5 +287,68 @@ public class RuneAction : MonoBehaviour {
             }
             #endregion
         }
+    }
+
+    public void ComboFuncP1()
+    {
+        if (levelManager.comboP1 != 5)
+        {
+            if(spP1 == true)
+            {
+                spP1 = false;
+                levelManager.comboP1 += 1;
+                P1Attack.text = "SA " + levelManager.comboP1 + "/" + levelManager.comboMax;
+                StartCoroutine(SPCouldount(2f, 1));
+            }
+        }
+        else if (levelManager.comboP1 == 5)
+        {
+            levelManager.PowerAttackP1 = true;
+        }
+
+        if (levelManager.comboP2 >= 2)
+        {
+            levelManager.comboP2 = 0;
+            P2Attack.text = "SA " + levelManager.comboP2 + "/" + levelManager.comboMax;
+        }
+    }
+
+    public void ComboFuncP2()
+    {
+        if (levelManager.comboP2 != 5)
+        {
+            if(spP2 == true)
+            {
+                spP2 = false;
+                levelManager.comboP2 += 1;
+                P2Attack.text = "SA " + levelManager.comboP2 + "/" + levelManager.comboMax;
+                StartCoroutine(SPCouldount(2f, 2));
+            }
+        }
+        else if (levelManager.comboP2 == 5)
+        {
+            levelManager.PowerAttackP2 = true;
+        }
+
+        if (levelManager.comboP1 >= 2)
+        {
+            levelManager.comboP1 = 0;
+            P1Attack.text = "SA " + levelManager.comboP1 + "/" + levelManager.comboMax;
+        }
+    }
+
+    private IEnumerator SPCouldount(float waitTime, int playerId)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (playerId == 1)
+        {
+            spP1 = true;
+        }
+        else
+        {
+            spP2 = true;
+
+        }
+        
     }
 }
