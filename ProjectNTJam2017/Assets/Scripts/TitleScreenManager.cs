@@ -9,7 +9,9 @@ public class TitleScreenManager : MonoBehaviour
     public string annee;
     public string mois;
     public string jour;
-    public Text dateText;
+    public Text dateTextJ;
+    public Text dateTextM;
+    public Text dateTextA;
 
     // Use this for initialization
     void Start()
@@ -58,7 +60,9 @@ public class TitleScreenManager : MonoBehaviour
 
         }
         #endregion
-        dateText.text = (jour + " " + mois + " " + annee);
+        dateTextJ.text = jour;
+        dateTextM.text = mois;
+        dateTextA.text = annee;
     }
     // Update is called once per frame
     void Update()

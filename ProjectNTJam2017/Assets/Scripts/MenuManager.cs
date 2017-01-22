@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour {
 
     public void play()
     {
-
+        Application.LoadLevel("TonyScene");
     }
 
 
