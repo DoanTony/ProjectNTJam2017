@@ -14,29 +14,28 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ScoreP1 = StaticData.Player1Score;
-        ScoreP2 = StaticData.Player2Score;
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.clip = Clips[0];
         audioSource.Play();
 	}
-    public void FixedUpdate()
+     void FixedUpdate()
     {
+         Debug.Log(StaticData.Player1Score);
         if(ScoreP1 >= 4)
         {
             Debug.Log("PLAYER1 WIN");
         }
-        else if(ScoreP2 >= 4)
+        else if(StaticData.Player2Score >= 4)
         {
             Debug.Log("PLAYER2 WIN");
         }
         else if(StaticData.Minute >= 5)
         {
-            if(ScoreP1 > ScoreP2)
+            if(StaticData.Player1Score > StaticData.Player2Score)
             {
                 Debug.Log("PLAYER1 WIN");
             }
-            else if(ScoreP2 > ScoreP1)
+            else if(StaticData.Player2Score > StaticData.Player1Score)
             {
                 Debug.Log("PLAYER2 WIN");
             }
