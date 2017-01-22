@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour {
             {
                 Seconds = 0;
                 Minutes++;
+                StaticData.Minute = Minutes;
             }
         }
         
@@ -67,8 +68,8 @@ public class LevelManager : MonoBehaviour {
     }
     void OnGUI()
     {
-        ScoreText[0].text = "Player 1 : " + StaticData.Player1Score ;
-        ScoreText[1].text = "Player 2 : " + StaticData.Player2Score;
+        ScoreText[0].text = StaticData.Player1Score.ToString("00") + "    Player1";
+        ScoreText[1].text = "Player2   " + StaticData.Player2Score.ToString("00");
         //GUI.TextField(new Rect(Screen.width/2, (Screen.height-Screen.height)+50, 200, 50), "Score : " + Player1Point.ToString() + " | " + Player2Point.ToString());
     }
 }
