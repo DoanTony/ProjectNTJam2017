@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MenuScreen.unity
+=======
+- path: Assets/Scenes/ChrisScene.unity
+>>>>>>> d36c8d2e656cc84bd19fee3e66e0075626d946a0
   isLoaded: 1
   isActive: 1
